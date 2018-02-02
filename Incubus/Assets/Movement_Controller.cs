@@ -41,7 +41,18 @@ public class Movement_Controller : MonoBehaviour {
         {
             moveDirection += Vector2.down;
         }
-        if(transform.position.x > 9.5f)
+        Wrap();
+    }
+
+    void FixedUpdate()
+    {
+        Vector2 pos = (Vector2)transform.position + (moveDirection * speed * Time.deltaTime);
+        rb.MovePosition(pos);
+    }
+
+    void Wrap()
+    {
+        if (transform.position.x > 9.5f)
         {
             Vector3 pos = transform.position;
             pos.x = -9.3f;
@@ -53,11 +64,17 @@ public class Movement_Controller : MonoBehaviour {
             pos.x = 9.3f;
             transform.position = pos;
         }
-    }
-
-    void FixedUpdate()
-    {
-        Vector2 pos = (Vector2)transform.position + (moveDirection * speed * Time.deltaTime);
-        rb.MovePosition(pos);
+        if (transform.position.y > 5.7f)
+        {
+            Vector3 pos = transform.position;
+            pos.y = -5.5f;
+            transform.position = pos;
+        }
+        if (transform.position.y < -5.7f)
+        {
+            Vector3 pos = transform.position;
+            pos.y = 5.5f;
+            transform.position = pos;
+        }
     }
 }
