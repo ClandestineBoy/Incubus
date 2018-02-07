@@ -14,7 +14,7 @@ public class Movement_Controller : MonoBehaviour
     public KeyCode dashKey;
 
     public float speed;
-    float dashcount = 20;
+    float dashcount = 15;
 
     Vector3 moveDirection = Vector3.zero;
 
@@ -32,9 +32,11 @@ public class Movement_Controller : MonoBehaviour
         {
             Vector3 pre = moveDirection;
             dashcount--;
-           /* Vector2 mov = moveDirection;
-            mov *= 0.5f;
-            moveDirection = mov;*/
+            moveDirection.x *= 0.55f;
+            moveDirection.y *= 0.55f;
+            /* Vector2 mov = moveDirection;
+             mov *= 0.5f;
+             moveDirection = mov;*/
             //moveDirection.y *= 0.5f;
             if (moveDirection.z == 2)
             {
@@ -106,10 +108,11 @@ public class Movement_Controller : MonoBehaviour
         if (state == PlayerState.walk)
         {
             DashCheck();
-            moveDirection.x *= 0.75f;
-            moveDirection.y *= 0.75f;
+            moveDirection.x *= 0.8f;
+            moveDirection.y *= 0.8f;
             if (Input.GetKey(rightKey))
             {
+                moveDirection.z = 2;
                 moveDirection += Vector3.right;
                 if (Input.GetKey(leftKey))
                 {
@@ -123,13 +126,10 @@ public class Movement_Controller : MonoBehaviour
                 {
                     moveDirection.z = 23;
                 }
-                else
-                {
-                    moveDirection.z = 2;
-                }
             }
             if (Input.GetKey(leftKey))
             {
+                moveDirection.z = 4;
                 moveDirection += Vector3.left;
                 if (Input.GetKey(rightKey))
                 {
@@ -142,14 +142,11 @@ public class Movement_Controller : MonoBehaviour
                 if (Input.GetKey(downKey))
                 {
                     moveDirection.z = 43;
-                }
-                else
-                {
-                    moveDirection.z = 4;
-                }
+                }               
             }
             if (Input.GetKey(upKey))
             {
+                moveDirection.z = 1;
                 moveDirection += Vector3.up;
                 if (Input.GetKey(leftKey))
                 {
@@ -163,13 +160,10 @@ public class Movement_Controller : MonoBehaviour
                 {
                     moveDirection.z = 12;
                 }
-                else
-                {
-                    moveDirection.z = 1;
-                }
             }
             if (Input.GetKey(downKey))
             {
+                moveDirection.z = 3;
                 moveDirection += Vector3.down;
                 if (Input.GetKey(leftKey))
                 {
@@ -183,14 +177,10 @@ public class Movement_Controller : MonoBehaviour
                 {
                     moveDirection.z = 32;
                 }
-                else
-                {
-                    moveDirection.z = 3;
-                }
             }            
         }
         Wrap();
-        Debug.Log(moveDirection);
+        Debug.Log(moveDirection.z);
     }
 
     void FixedUpdate()
@@ -231,7 +221,7 @@ public class Movement_Controller : MonoBehaviour
     {
         if (Input.GetKeyDown(dashKey))
         {
-            dashcount = 20;
+            dashcount = 15;
             state = PlayerState.dash;
         }
     }
@@ -240,7 +230,8 @@ public class Movement_Controller : MonoBehaviour
     {
         float s = speed;
         if (state == PlayerState.dash)
-            s *= 1.5f;
+            s *= 5f;
         return s;
     }
-}
+}
+
