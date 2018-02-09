@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement_Controller : MonoBehaviour
 {
-    public enum PlayerState { walk, dash, attack};
+    public enum PlayerState { walk, dash, attack };
     public PlayerState state = PlayerState.walk;
 
     public KeyCode rightKey;
@@ -14,7 +15,10 @@ public class Movement_Controller : MonoBehaviour
     public KeyCode dashKey;
 
     public float speed;
-    float dashcount = 15;
+    float dashcount = 10;
+
+    Vector3 currentRoom = new Vector3(1, 1, 1);
+    Vector2 roomDirection = Vector2.zero;
 
     Vector3 moveDirection = Vector3.zero;
 
@@ -28,82 +32,19 @@ public class Movement_Controller : MonoBehaviour
 
     void Update()
     {
-        if(state == PlayerState.dash)
+        if (state == PlayerState.dash)
         {
-            Vector3 pre = moveDirection;
+           
             dashcount--;
-            moveDirection.x *= 0.55f;
-            moveDirection.y *= 0.55f;
+            //moveDirection.x *= 0.55f;
+            //moveDirection.y *= 0.55f;
             /* Vector2 mov = moveDirection;
              mov *= 0.5f;
              moveDirection = mov;*/
             //moveDirection.y *= 0.5f;
-            if (moveDirection.z == 2)
-            {
-                moveDirection += Vector3.right;
-            }
-            if (moveDirection.z == 23)
-            {
-                pre = new Vector3(1,-1,0);
-                pre.Normalize();
-                moveDirection += pre;
-            }
-            if (moveDirection.z == 21)
-            {
-                pre = new Vector3(1, 1, 0);
-                pre.Normalize();
-                moveDirection += pre;
-            }
-            if (moveDirection.z == 4)
-            {
-                moveDirection += Vector3.left;
-            }
-            if (moveDirection.z == 43)
-            {
-                pre = new Vector3(-1, -1, 0);
-                pre.Normalize();
-                moveDirection += pre;
-            }
-            if (moveDirection.z == 41)
-            {
-                pre = new Vector3(-1, 1, 0);
-                pre.Normalize();
-                moveDirection += pre;
-            }
-            if (moveDirection.z == 1)
-            {
-                moveDirection += Vector3.up;
-            }
-            if (moveDirection.z == 12)
-            {
-                pre = new Vector3(1, 1, 0);
-                pre.Normalize();
-                moveDirection += pre;
-            }
-            if (moveDirection.z == 14)
-            {
-                pre = new Vector3(-1, 1, 0);
-                pre.Normalize();
-                moveDirection += pre;
-            }
-            if (moveDirection.z == 3)
-            {
-                moveDirection += Vector3.down;
-            }
-            if (moveDirection.z == 34)
-            {
-                pre = new Vector3(-1, -1, 0);
-                pre.Normalize();
-                moveDirection += pre;
-            }
-            if (moveDirection.z == 32)
-            {
-                pre = new Vector3(1, -1, 0);
-                pre.Normalize();
-                moveDirection += pre;
-            }
+          
             if (dashcount <= 0)
-               state = PlayerState.walk;
+                state = PlayerState.walk;
         }
         if (state == PlayerState.walk)
         {
@@ -142,7 +83,7 @@ public class Movement_Controller : MonoBehaviour
                 if (Input.GetKey(downKey))
                 {
                     moveDirection.z = 43;
-                }               
+                }
             }
             if (Input.GetKey(upKey))
             {
@@ -154,7 +95,7 @@ public class Movement_Controller : MonoBehaviour
                 }
                 if (Input.GetKey(downKey))
                 {
-                   
+
                 }
                 if (Input.GetKey(rightKey))
                 {
@@ -177,9 +118,9 @@ public class Movement_Controller : MonoBehaviour
                 {
                     moveDirection.z = 32;
                 }
-            }            
+            }
         }
-        Wrap();
+        RoomChange();
         Debug.Log(moveDirection.z);
     }
 
@@ -189,31 +130,36 @@ public class Movement_Controller : MonoBehaviour
         rb.MovePosition(pos);
     }
 
-    void Wrap()
+    bool RoomCheck()
     {
         if (transform.position.x > 9.5f)
         {
-            Vector3 pos = transform.position;
-            pos.x = -9.3f;
-            transform.position = pos;
+            roomDirection = Vector2.right;
+            return true;
         }
         if (transform.position.x < -9.5f)
         {
-            Vector3 pos = transform.position;
-            pos.x = 9.3f;
-            transform.position = pos;
+            roomDirection = Vector2.left;
+            return true;
         }
         if (transform.position.y > 5.7f)
         {
-            Vector3 pos = transform.position;
-            pos.y = -5.5f;
-            transform.position = pos;
+            roomDirection = Vector2.up;
+            return true;
         }
         if (transform.position.y < -5.7f)
         {
-            Vector3 pos = transform.position;
-            pos.y = 5.5f;
-            transform.position = pos;
+            roomDirection = Vector2.down;
+            return true;
+        }
+        return false;
+    }
+
+    void RoomChange()
+    {
+        if (RoomCheck())
+        {
+            SceneManager.LoadScene("Room_" + (currentRoom.x + roomDirection.x) + (currentRoom.y + roomDirection.y) + currentRoom.z);
         }
     }
 
@@ -221,8 +167,73 @@ public class Movement_Controller : MonoBehaviour
     {
         if (Input.GetKeyDown(dashKey))
         {
-            dashcount = 15;
+            dashcount = 10;
             state = PlayerState.dash;
+            Vector3 pre = moveDirection;
+            if (moveDirection.z == 2)
+            {
+                moveDirection = Vector3.right*5;
+            }
+            if (moveDirection.z == 23)
+            {
+                pre = new Vector3(1, -1, 0);
+                pre.Normalize();
+                moveDirection = pre*5;
+            }
+            if (moveDirection.z == 21)
+            {
+                pre = new Vector3(1, 1, 0);
+                pre.Normalize();
+                moveDirection = pre * 5;
+            }
+            if (moveDirection.z == 4)
+            {
+                moveDirection = Vector3.left * 5;
+            }
+            if (moveDirection.z == 43)
+            {
+                pre = new Vector3(-1, -1, 0);
+                pre.Normalize();
+                moveDirection = pre * 5;
+            }
+            if (moveDirection.z == 41)
+            {
+                pre = new Vector3(-1, 1, 0);
+                pre.Normalize();
+                moveDirection = pre * 5;
+            }
+            if (moveDirection.z == 1)
+            {
+                moveDirection = Vector3.up * 5;
+            }
+            if (moveDirection.z == 12)
+            {
+                pre = new Vector3(1, 1, 0);
+                pre.Normalize();
+                moveDirection = pre * 5;
+            }
+            if (moveDirection.z == 14)
+            {
+                pre = new Vector3(-1, 1, 0);
+                pre.Normalize();
+                moveDirection = pre * 5;
+            }
+            if (moveDirection.z == 3)
+            {
+                moveDirection = Vector3.down * 5;
+            }
+            if (moveDirection.z == 34)
+            {
+                pre = new Vector3(-1, -1, 0);
+                pre.Normalize();
+                moveDirection = pre * 5;
+            }
+            if (moveDirection.z == 32)
+            {
+                pre = new Vector3(1, -1, 0);
+                pre.Normalize();
+                moveDirection = pre * 5;
+            }
         }
     }
 
@@ -234,4 +245,3 @@ public class Movement_Controller : MonoBehaviour
         return s;
     }
 }
-
