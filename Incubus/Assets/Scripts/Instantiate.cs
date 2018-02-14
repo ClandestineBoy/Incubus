@@ -7,6 +7,7 @@ public class Instantiate : MonoBehaviour {
 
     public GameObject player;
     bool playerExists = false;
+    static int sceneload = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -15,9 +16,10 @@ public class Instantiate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && sceneload <= 0)
         {
             SceneManager.LoadScene("Room_111");
+            sceneload++;
             if (playerExists == false)
             {
                 playerExists = true;
