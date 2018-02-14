@@ -26,6 +26,7 @@ public class Movement_Controller : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -132,23 +133,36 @@ public class Movement_Controller : MonoBehaviour
 
     bool RoomCheck()
     {
+        Vector2 pos = new Vector2();
         if (transform.position.x > 9.5f)
         {
+            pos = transform.position;
+            pos.x = -9;
+            transform.position = pos;
             roomDirection = Vector2.right;
             return true;
         }
         if (transform.position.x < -9.5f)
         {
+            pos = transform.position;
+            pos.x = 9;
+            transform.position = pos;
             roomDirection = Vector2.left;
             return true;
         }
         if (transform.position.y > 5.7f)
         {
+            pos = transform.position;
+            pos.y = -5.7f;
+            transform.position = pos;
             roomDirection = Vector2.up;
             return true;
         }
         if (transform.position.y < -5.7f)
         {
+            pos = transform.position;
+            pos.y = 5.7f;
+            transform.position = pos;
             roomDirection = Vector2.down;
             return true;
         }
@@ -159,7 +173,9 @@ public class Movement_Controller : MonoBehaviour
     {
         if (RoomCheck())
         {
-            SceneManager.LoadScene("Room_" + (currentRoom.x + roomDirection.x) + (currentRoom.y + roomDirection.y) + currentRoom.z);
+            SceneManager.LoadScene("Room_" + (currentRoom.x + roomDirection.x) + (currentRoom.y - roomDirection.y) + currentRoom.z);
+            currentRoom = new Vector3(currentRoom.x + roomDirection.x, currentRoom.y - roomDirection.y, currentRoom.z);
+            roomDirection = Vector3.zero;
         }
     }
 
