@@ -20,9 +20,6 @@ public class Movement_Controller : MonoBehaviour
     public float maxHealth;
     public float curHealth;
 
-    Vector3 currentRoom = new Vector3(1, 1, 1);
-    Vector2 roomDirection = Vector2.zero;
-
     Vector3 moveDirection = Vector3.zero;
 
     Rigidbody2D rb;
@@ -32,7 +29,6 @@ public class Movement_Controller : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         rb = GetComponent<Rigidbody2D>();
     }
-
 
     void Update()
     {
@@ -124,61 +120,13 @@ public class Movement_Controller : MonoBehaviour
                 }
             }
         }
-        RoomChange();
+        
     }
 
     void FixedUpdate()
     {
         Vector2 pos = transform.position + (moveDirection * DashMod(speed) * Time.deltaTime);
         rb.MovePosition(pos);
-    }
-
-    bool RoomCheck()
-    {
-        Vector2 pos = new Vector2();
-        if (transform.position.x > 9.5f)
-        {
-            pos = transform.position;
-            pos.x = -9;
-            transform.position = pos;
-            roomDirection = Vector2.right;
-            return true;
-        }
-        if (transform.position.x < -9.5f)
-        {
-            pos = transform.position;
-            pos.x = 9;
-            transform.position = pos;
-            roomDirection = Vector2.left;
-            return true;
-        }
-        if (transform.position.y > 5.7f)
-        {
-            pos = transform.position;
-            pos.y = -5.7f;
-            transform.position = pos;
-            roomDirection = Vector2.up;
-            return true;
-        }
-        if (transform.position.y < -5.7f)
-        {
-            pos = transform.position;
-            pos.y = 5.7f;
-            transform.position = pos;
-            roomDirection = Vector2.down;
-            return true;
-        }
-        return false;
-    }
-
-    void RoomChange()
-    {
-        if (RoomCheck())
-        {
-            SceneManager.LoadScene("Room_" + (currentRoom.x + roomDirection.x) + (currentRoom.y - roomDirection.y) + currentRoom.z);
-            currentRoom = new Vector3(currentRoom.x + roomDirection.x, currentRoom.y - roomDirection.y, currentRoom.z);
-            roomDirection = Vector3.zero;
-        }
     }
 
     void DashCheck()

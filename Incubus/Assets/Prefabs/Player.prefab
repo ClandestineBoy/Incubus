@@ -96,6 +96,7 @@ MonoBehaviour:
   speed: 1
   maxHealth: 3
   curHealth: 3
+  cam: {fileID: 1789269439159050, guid: 59e1f2a700f1a9b429399c21b5e42135, type: 2}
 --- !u!212 &212078556958801820
 SpriteRenderer:
   m_ObjectHideFlags: 1
