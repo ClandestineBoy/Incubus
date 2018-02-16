@@ -17,6 +17,9 @@ public class Movement_Controller : MonoBehaviour
     public float speed;
     float dashcount = 10;
 
+    public float maxHealth;
+    public float curHealth;
+
     Vector3 currentRoom = new Vector3(1, 1, 1);
     Vector2 roomDirection = Vector2.zero;
 
@@ -122,7 +125,6 @@ public class Movement_Controller : MonoBehaviour
             }
         }
         RoomChange();
-        Debug.Log(moveDirection.z);
     }
 
     void FixedUpdate()
@@ -257,7 +259,7 @@ public class Movement_Controller : MonoBehaviour
     {
         float s = speed;
         if (state == PlayerState.dash)
-            s *= 5f;
+            s *= 3f;
         return s;
     }
 }
