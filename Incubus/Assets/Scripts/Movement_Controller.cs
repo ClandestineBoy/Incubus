@@ -20,6 +20,8 @@ public class Movement_Controller : MonoBehaviour
     public float maxHealth;
     public float curHealth;
 
+    public GameObject bullet;
+
     Vector3 moveDirection = Vector3.zero;
 
     Rigidbody2D rb;
@@ -119,6 +121,10 @@ public class Movement_Controller : MonoBehaviour
                     moveDirection.z = 32;
                 }
             }
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(bullet);
         }
         
     }
