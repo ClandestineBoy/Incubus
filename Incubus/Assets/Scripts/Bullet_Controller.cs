@@ -6,39 +6,37 @@ public class Bullet_Controller : MonoBehaviour {
 
     public GameObject player;
 
-    public Vector2 anchor;
+    Vector2 anchor;
 
-    Vector2 moveDirection;
+    public float speed;
+    Vector3 moveDirection;
+
+    Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
+        rb = GetComponent<Rigidbody2D>();
         transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
         anchor = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        moveDirection = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y);
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-        
-        
+        moveDirection.x *= 0.8f;
+        moveDirection.y *= 0.8f;
+        moveDirection.Normalize();
     }
     void FixedUpdate()
     {
         Vector2 pos;
-        if (transform.position.x < anchor.x)
-        {
-            moveDirection = Vector2.right;
-        }
-        if (transform.position.x > anchor.x)
-        {
-            moveDirection = Vector2.left;
-        }
-        pos = transform.position;
-        pos += moveDirection;
-        transform.position = pos;
+        pos = transform.position + (moveDirection * speed * Time.deltaTime);
+        rb.MovePosition(pos);
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.tag != GameObject.FindGameObjectWithTag("Player").tag)
         Destroy(gameObject);  
     }
 }
