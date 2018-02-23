@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Floor_1.unity
     guid: 762bdf4d0bf771b45a56778fab7614f2
+  - enabled: 1
+    path: Assets/Game Over.unity
+    guid: 400421776c8f3674ca7f99898e1a7d18

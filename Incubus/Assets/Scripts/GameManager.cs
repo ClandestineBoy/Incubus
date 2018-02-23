@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Instantiate : MonoBehaviour {
+public class GameManager : MonoBehaviour {
 
     public GameObject player;
-    bool playerExists = false;
+    bool playerExists;
+    public float bulletDamage = 1; 
 
 	// Use this for initialization
 	void Start () {
+        playerExists = false;
         DontDestroyOnLoad(gameObject);
 	}
 	

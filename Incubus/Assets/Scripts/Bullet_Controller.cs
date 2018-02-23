@@ -15,13 +15,20 @@ public class Bullet_Controller : MonoBehaviour {
     Rigidbody2D rb;
 
 	// Use this for initialization
+ 
 	void Start () {
-        damage = 1;
         rb = GetComponent<Rigidbody2D>();
-        transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
-        anchor = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        moveDirection = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y);
-        
+        if (gameObject.tag != "EnemyBullet")
+        {
+            transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+            anchor = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+        else
+        {
+            //transform.position = GameObject.FindGameObjectWithTag("Enemy").transform.position;
+            anchor = GameObject.FindGameObjectWithTag("Player").transform.position;
+        }
+        moveDirection = new Vector2(anchor.x - transform.position.x, anchor.y - transform.position.y);
     }
 	
 	// Update is called once per frame
@@ -38,15 +45,19 @@ public class Bullet_Controller : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (collision.gameObject.tag != GameObject.FindGameObjectWithTag("Player").tag && collision.gameObject.tag != GameObject.FindGameObjectWithTag("Bullet").tag)
-        { 
-            Destroy(gameObject);
-        }
-       /* if (collision.gameObject.tag == GameObject.FindGameObjectWithTag("Enemy").tag)
+        if (gameObject.tag == "Bullet")
         {
-            var other = collision.GetComponent("Enemy_Controller");
-            other.TakeDamage(damage);
-        }*/
+            if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "EnemyBullet")
+            {
+                Destroy(gameObject);
+            }
+        }
+        if(gameObject.tag == "EnemyBullet")
+        {
+            if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "EnemyBullet")
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }

@@ -126,7 +126,10 @@ public class Movement_Controller : MonoBehaviour
         {
             Instantiate(bullet);
         }
-        
+        if(curHealth <= 0)
+        {
+            SceneManager.LoadScene("Game Over");
+        }
     }
 
     void FixedUpdate()
@@ -215,5 +218,14 @@ public class Movement_Controller : MonoBehaviour
         if (state == PlayerState.dash)
             s *= 3f;
         return s;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == GameObject.FindGameObjectWithTag("Enemy").tag)
+        {
+            //curHealth -= 1;
+            SceneManager.LoadScene("Game Over");
+        }
     }
 }
