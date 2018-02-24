@@ -5,12 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
+    public KeyCode reset;
     public GameObject player;
     bool playerExists;
-    public float bulletDamage = 1; 
+    public float bulletDamage;
+    public float playerHealth;
+    TextMesh tm;
 
 	// Use this for initialization
 	void Start () {
+        tm = GetComponent<TextMesh>();
+        bulletDamage = 1;
         playerExists = false;
         DontDestroyOnLoad(gameObject);
 	}
@@ -27,5 +32,21 @@ public class GameManager : MonoBehaviour {
             }
             
         }
-	}
+        if(SceneManager.GetActiveScene().buildIndex != 0)
+        tm.text = playerHealth + "";
+        if (Input.GetKeyDown(reset))
+        {
+            SceneManager.LoadScene(1);
+            GameObject.Find("Player").transform.position = new Vector3(0, 0, 0);
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        playerHealth -= damage;
+    }
+    public void UpBulletDamage(float dmg)
+    {
+        bulletDamage += dmg;
+    }
 }

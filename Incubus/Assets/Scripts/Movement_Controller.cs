@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Movement_Controller : MonoBehaviour
 {
-    public enum PlayerState { walk, dash, attack };
+    public enum PlayerState { walk, dash};
     public PlayerState state = PlayerState.walk;
+
+    public GameObject manager;
+    GameManager manager_script;
 
     public KeyCode rightKey;
     public KeyCode leftKey;
@@ -18,7 +21,6 @@ public class Movement_Controller : MonoBehaviour
     float dashcount = 10;
 
     public float maxHealth;
-    public float curHealth;
 
     public GameObject bullet;
 
@@ -28,8 +30,11 @@ public class Movement_Controller : MonoBehaviour
 
     void Start()
     {
+        manager = GameObject.Find("GameManager");
+        manager_script = manager.GetComponent<GameManager>();
         DontDestroyOnLoad(gameObject);
         rb = GetComponent<Rigidbody2D>();
+        manager_script.playerHealth = maxHealth;
     }
 
     void Update()
@@ -126,7 +131,7 @@ public class Movement_Controller : MonoBehaviour
         {
             Instantiate(bullet);
         }
-        if(curHealth <= 0)
+        if(manager_script.playerHealth <= 0)
         {
             SceneManager.LoadScene("Game Over");
         }
@@ -222,10 +227,17 @@ public class Movement_Controller : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == GameObject.FindGameObjectWithTag("Enemy").tag)
+        if (collision.gameObject.tag == GameObject.FindGameObjectWithTag("Enemy").tag || collision.gameObject.tag == GameObject.FindGameObjectWithTag("EnemyBullet").tag)
         {
-            //curHealth -= 1;
-            SceneManager.LoadScene("Game Over");
+            manager_script.TakeDamage(1);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "EnemyBullet")
+        {
+            manager_script.TakeDamage(1);
         }
     }
 }

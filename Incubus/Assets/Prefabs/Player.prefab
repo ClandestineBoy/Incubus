@@ -88,14 +88,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  manager: {fileID: 0}
   rightKey: 100
   leftKey: 97
   upKey: 119
   downKey: 115
   dashKey: 304
   speed: 1
-  maxHealth: 3
-  curHealth: 3
+  maxHealth: 10
+  curHealth: 10
   bullet: {fileID: 1875319316541238, guid: e4a6a7c14a6cca343aad251961dc3134, type: 2}
 --- !u!212 &212078556958801820
 SpriteRenderer:

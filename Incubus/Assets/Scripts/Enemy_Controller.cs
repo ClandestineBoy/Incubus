@@ -12,7 +12,8 @@ public class Enemy_Controller : MonoBehaviour {
     public bool chase;
     public bool shoot;
 
-    GameManager manage;
+    public GameObject manager;
+    GameManager manager_script;
 
     public float fireInterval;
     public float fireCount;
@@ -22,8 +23,9 @@ public class Enemy_Controller : MonoBehaviour {
     public GameObject EnemyBullet;
 
 	void Start () {
+        manager = GameObject.Find("GameManager");
+        manager_script = manager.GetComponent<GameManager>();
         fireCount = fireInterval;
-       manage = new GameManager();
        hp = maxhp;
        rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -55,7 +57,7 @@ public class Enemy_Controller : MonoBehaviour {
     {
         if (collision.gameObject.tag == GameObject.FindGameObjectWithTag("Bullet").tag)
         {
-            hp -= manage.bulletDamage;
+            hp -= manager_script.bulletDamage;
         }
     }
 
