@@ -853,7 +853,7 @@ MonoBehaviour:
   chase: 0
   shoot: 1
   manager: {fileID: 0}
-  fireInterval: 120
+  fireInterval: 90
   fireCount: 0
   maxhp: 15
   hp: 0
@@ -874,7 +874,7 @@ MonoBehaviour:
   chase: 0
   shoot: 1
   manager: {fileID: 0}
-  fireInterval: 120
+  fireInterval: 90
   fireCount: 0
   maxhp: 15
   hp: 0
@@ -916,7 +916,7 @@ MonoBehaviour:
   chase: 0
   shoot: 1
   manager: {fileID: 0}
-  fireInterval: 120
+  fireInterval: 90
   fireCount: 0
   maxhp: 15
   hp: 0
@@ -953,7 +953,7 @@ MonoBehaviour:
   chase: 0
   shoot: 1
   manager: {fileID: 0}
-  fireInterval: 120
+  fireInterval: 90
   fireCount: 0
   maxhp: 15
   hp: 0

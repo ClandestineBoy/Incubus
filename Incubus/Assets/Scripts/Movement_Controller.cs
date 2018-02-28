@@ -39,10 +39,15 @@ public class Movement_Controller : MonoBehaviour
 
     void Update()
     {
+       
+    }
+
+    void FixedUpdate()
+    {
         manager_script.playerPos = transform.position;
         if (state == PlayerState.dash)
         {
-           
+
             dashcount--;
             //moveDirection.x *= 0.55f;
             //moveDirection.y *= 0.55f;
@@ -50,7 +55,7 @@ public class Movement_Controller : MonoBehaviour
              mov *= 0.5f;
              moveDirection = mov;*/
             //moveDirection.y *= 0.5f;
-          
+
             if (dashcount <= 0)
                 state = PlayerState.walk;
         }
@@ -132,14 +137,11 @@ public class Movement_Controller : MonoBehaviour
         {
             Instantiate(bullet);
         }
-        if(manager_script.playerHealth <= 0)
+        if (manager_script.playerHealth <= 0)
         {
             SceneManager.LoadScene("Game Over");
         }
-    }
 
-    void FixedUpdate()
-    {
         Vector2 pos = transform.position + (moveDirection * DashMod(speed) * Time.deltaTime);
         rb.MovePosition(pos);
     }

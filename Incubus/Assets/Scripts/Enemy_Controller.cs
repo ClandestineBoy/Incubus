@@ -30,26 +30,29 @@ public class Enemy_Controller : MonoBehaviour {
        rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
     }
-	
-	// Update is called once per frame
-	void Update () {
-        moveDirection.x *= 0.8f;
-        moveDirection.y *= 0.8f;
 
-        if (chase == true)
-            Chasing();
-        if (shoot == true)
-            Shooting();
-
-        if(hp <= 0)
-        {
-            Destroy(gameObject);
-            manager_script.enemiesInRoom -= 1;
-        }
-        Color();
+    // Update is called once per frame
+    void Update()
+    {
     }
+       
     void FixedUpdate()
     {
+            moveDirection.x *= 0.8f;
+            moveDirection.y *= 0.8f;
+
+            if (chase == true)
+                Chasing();
+            if (shoot == true)
+                Shooting();
+
+            if (hp <= 0)
+            {
+                Destroy(gameObject);
+                manager_script.enemiesInRoom -= 1;
+            }
+            Color();
+
         Vector3 pos;
         pos = transform.position + (moveDirection * speed * Time.deltaTime);
         rb.MovePosition(pos);
