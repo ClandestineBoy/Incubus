@@ -22,6 +22,13 @@ public class Room_Stuff : MonoBehaviour {
 	void Update () {
         if (manager_script.enemiesInRoom <= 0 && defeated == false && inRoom == true && roomStart == true)
         {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                if(transform.GetChild(i).tag == "Enemy")
+                {
+                    transform.GetChild(i).gameObject.SetActive(true);
+                }
+            }
             manager_script.enemiesInRoom = enemies;
             roomStart = false;
         }
