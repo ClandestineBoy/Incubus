@@ -44,6 +44,7 @@ public class Enemy_Controller : MonoBehaviour {
         if(hp <= 0)
         {
             Destroy(gameObject);
+            manager_script.enemiesInRoom -= 1;
         }
         Color();
     }

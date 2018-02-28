@@ -10,10 +10,17 @@ public class GameManager : MonoBehaviour {
     bool playerExists;
     public float bulletDamage;
     public float playerHealth;
+    public float enemiesInRoom;
+    public bool doorsClosed;
     TextMesh tm;
+    public Vector2 playerPos;
+
+    public GameObject[] rooms;
 
 	// Use this for initialization
 	void Start () {
+        
+        doorsClosed = true;
         tm = GetComponent<TextMesh>();
         bulletDamage = 1;
         playerExists = false;
@@ -24,16 +31,32 @@ public class GameManager : MonoBehaviour {
 	void Update () {
         if (Input.GetMouseButtonDown(1) && SceneManager.GetActiveScene().buildIndex == 0)
         {
+            rooms = GameObject.FindGameObjectsWithTag("Room");
             SceneManager.LoadScene("Floor_1");
             if (playerExists == false)
             {
                 playerExists = true;
                 Instantiate(player);
             }
-            
+
         }
-        if(SceneManager.GetActiveScene().buildIndex != 0)
+
+        if (enemiesInRoom <= 0)
+        {
+            doorsClosed = false;
+            for(int i = 0; i < rooms.Length; i++)
+            {
+                if (rooms[i].GetComponent<Room_Stuff>().inRoom == true)
+                    rooms[i].GetComponent<Room_Stuff>().defeated = true;
+            }
+        }
+        if (enemiesInRoom > 0)
+        {
+            doorsClosed = true;
+        }
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         tm.text = playerHealth + "";
+
         if (Input.GetKeyDown(reset))
         {
             SceneManager.LoadScene(1);

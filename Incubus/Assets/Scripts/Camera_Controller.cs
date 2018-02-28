@@ -5,14 +5,21 @@ using UnityEngine;
 public class Camera_Controller : MonoBehaviour {
 
     public GameObject player;
+    public GameObject manager;
+    GameManager manager_script;
 
-    
     void Start () {
-		
-	}
+        manager = GameObject.Find("GameManager");
+        manager_script = manager.GetComponent<GameManager>();
+    }
 	
 	void Update () {
         RoomChange();
+        Vector3 pos;
+        pos = manager.transform.position;
+        pos.x = transform.position.x - 8;
+        pos.y = transform.position.y + 4;
+        manager.transform.position = pos;
     }
 
     void RoomChange()

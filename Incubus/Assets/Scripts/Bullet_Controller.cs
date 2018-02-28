@@ -47,14 +47,14 @@ public class Bullet_Controller : MonoBehaviour {
     {
         if (gameObject.tag == "Bullet")
         {
-            if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "EnemyBullet")
+            if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "EnemyBullet" && collision.gameObject.tag != "Room")
             {
                 Destroy(gameObject);
             }
         }
         if(gameObject.tag == "EnemyBullet")
         {
-            if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "EnemyBullet")
+            if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "EnemyBullet" && collision.gameObject.tag != "Room")
             {
                 Destroy(gameObject);
             }

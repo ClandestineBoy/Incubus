@@ -83,7 +83,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1306178961106898}
-  m_Text: fuck
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.04
   m_LineSpacing: 1
@@ -108,6 +108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d80f500bf701f1469f955edec3a1bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reset: 114
   player: {fileID: 1810984070696158, guid: 61745eb05a191264d80ef50101a5ec99, type: 2}
   bulletDamage: 1
   playerHealth: 0
+  enemiesInRoom: 0
+  doorsClosed: 1
+  playerPos: {x: 0, y: 0}
+  rooms: []

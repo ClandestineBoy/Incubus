@@ -39,6 +39,7 @@ public class Movement_Controller : MonoBehaviour
 
     void Update()
     {
+        manager_script.playerPos = transform.position;
         if (state == PlayerState.dash)
         {
            
