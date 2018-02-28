@@ -31,23 +31,28 @@ public class GameManager : MonoBehaviour {
 	void Update () {
         if (Input.GetMouseButtonDown(1) && SceneManager.GetActiveScene().buildIndex == 0)
         {
-            rooms = GameObject.FindGameObjectsWithTag("Room");
+           
             SceneManager.LoadScene("Floor_1");
             if (playerExists == false)
             {
                 playerExists = true;
                 Instantiate(player);
             }
-
         }
-
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            rooms = GameObject.FindGameObjectsWithTag("Room");
+        }
         if (enemiesInRoom <= 0)
         {
             doorsClosed = false;
             for(int i = 0; i < rooms.Length; i++)
             {
-                if (rooms[i].GetComponent<Room_Stuff>().inRoom == true)
+                if (rooms[i].GetComponent<Room_Stuff>().inRoom == true && rooms[i].GetComponent<Room_Stuff>().roomStart == false)
+                {
                     rooms[i].GetComponent<Room_Stuff>().defeated = true;
+                   
+                }
             }
         }
         if (enemiesInRoom > 0)

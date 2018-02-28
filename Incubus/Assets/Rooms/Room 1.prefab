@@ -392,7 +392,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0068389177, y: -0.041028976}
@@ -471,7 +471,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: 5
   manager: {fileID: 0}
-  inRoom: 1
+  inRoom: 0
+  defeated: 0
+  roomStart: 0
 --- !u!212 &212268978221155400
 SpriteRenderer:
   m_ObjectHideFlags: 1

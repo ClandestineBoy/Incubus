@@ -22,7 +22,6 @@ public class Room_Stuff : MonoBehaviour {
 	void Update () {
         if (manager_script.enemiesInRoom <= 0 && defeated == false && inRoom == true && roomStart == true)
         {
-            Debug.Log("Sup nerd");
             manager_script.enemiesInRoom = enemies;
             roomStart = false;
         }
@@ -31,11 +30,14 @@ public class Room_Stuff : MonoBehaviour {
     {
         if(collision.tag == "Player")
         {
-            roomStart = true;
             inRoom = true;
         }
     }
     void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.tag == "Player")
+        {
+            inRoom = false;
+        }
     }
-    }
+}
