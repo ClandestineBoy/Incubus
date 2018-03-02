@@ -39,9 +39,11 @@ public class Movement_Controller : MonoBehaviour
 
     void Update()
     {
-       
+        if (state == PlayerState.walk)
+        {
+            DashCheck();
+        }
     }
-
     void FixedUpdate()
     {
         manager_script.playerPos = transform.position;

@@ -84,6 +84,6 @@ public class Enemy_Controller : MonoBehaviour {
 
     void Color()
     {
-        sr.color = new Color((hp/maxhp), 0, 0);
+        sr.color = new Color((hp/maxhp), (hp / maxhp), (hp / maxhp));
     }
     }
