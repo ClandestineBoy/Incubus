@@ -12,6 +12,8 @@ public class Enemy_Controller : MonoBehaviour {
     public bool chase;
     public bool shoot;
 
+    Animator animator;
+
     public GameObject manager;
     GameManager manager_script;
 
@@ -23,9 +25,10 @@ public class Enemy_Controller : MonoBehaviour {
     public GameObject EnemyBullet;
 
 	void Start () {
+        animator = GetComponent<Animator>();
+        animator.SetInteger("Alive",1);
         manager = GameObject.Find("GameManager");
         manager_script = manager.GetComponent<GameManager>();
-        fireCount = fireInterval;
        hp = maxhp;
        rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -34,6 +37,7 @@ public class Enemy_Controller : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+
     }
        
     void FixedUpdate()

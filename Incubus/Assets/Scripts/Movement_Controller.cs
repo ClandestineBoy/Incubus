@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Movement_Controller : MonoBehaviour
 {
+    public AudioClip shoot;
+
+    Animator animator;
+
     public enum PlayerState { walk, dash};
     public PlayerState state = PlayerState.walk;
 
@@ -30,6 +34,7 @@ public class Movement_Controller : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         manager = GameObject.Find("GameManager");
         manager_script = manager.GetComponent<GameManager>();
         DontDestroyOnLoad(gameObject);
@@ -137,6 +142,7 @@ public class Movement_Controller : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
+            sound.me.PlaySound(shoot, .1f, Random.Range(.5f,1f));
             Instantiate(bullet);
         }
         if (manager_script.playerHealth <= 0)

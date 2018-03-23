@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50213549133907972}
   - component: {fileID: 114069792901908678}
   - component: {fileID: 61018394057561716}
+  - component: {fileID: 95554332418067524}
   m_Layer: 0
   m_Name: Ranger (3)
   m_TagString: Enemy
@@ -37,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1303032644098508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.49, y: -2.49, z: 0}
-  m_LocalScale: {x: 0.7809393, y: 0.7809393, z: 0.7809393}
+  m_LocalPosition: {x: 26.128475, y: -3.11968, z: -1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.7809393}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,20 +75,37 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 2.08, y: 2.4}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.2}
+  m_Size: {x: 2, y: 2.3}
   m_EdgeRadius: 0
+--- !u!95 &95554332418067524
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1303032644098508}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2017f26d200cd304bb2c781670b7f172, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114069792901908678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,8 +121,8 @@ MonoBehaviour:
   chase: 0
   shoot: 1
   manager: {fileID: 0}
-  fireInterval: 60
-  fireCount: 0
+  fireInterval: 37
+  fireCount: 20
   maxhp: 25
   hp: 0
   EnemyBullet: {fileID: 1598953017743964, guid: a8305ca24c5a5314bbd05f92053ca482,
@@ -143,7 +161,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f8dfc35c50eef04469c6c59355f8559f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f183650449d8e9418e63cbf2bde887b, type: 3}
   m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -49,14 +49,14 @@ public class Camera_Controller : MonoBehaviour {
             if (transform.position.y + 5.7f < GameObject.FindGameObjectWithTag("Player").transform.position.y)
         {
             pos = transform.position;
-            pos.y += 12;
+            pos.y += 11f;
             transform.position = pos;
 
         }
         if (transform.position.y - 5.7f > GameObject.FindGameObjectWithTag("Player").transform.position.y)
         {
             pos = transform.position;
-            pos.y -= 12;
+            pos.y -= 11f;
             transform.position = pos;
 
         }
