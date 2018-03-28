@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
+    public AudioClip hurt;
+
     public KeyCode reset;
     public GameObject player;
     bool playerExists;
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour {
     public void TakeDamage(float damage)
     {
         playerHealth -= damage;
+        sound.me.PlaySound(hurt, 1f, Random.Range(.5f, 1f));
     }
     public void UpBulletDamage(float dmg)
     {

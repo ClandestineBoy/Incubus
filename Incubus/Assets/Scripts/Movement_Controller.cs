@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class Movement_Controller : MonoBehaviour
 {
     public AudioClip shoot;
-
+    public AudioClip music;
+    public AudioClip step;
+    AudioSource walk;
     Animator animator;
 
     public enum PlayerState { walk, dash};
@@ -34,6 +36,9 @@ public class Movement_Controller : MonoBehaviour
 
     void Start()
     {
+        sound.me.PlaySound(music, .5f, 1, true);
+        walk = sound.me.PlaySound(step, .3f, Random.Range(.5f, 1f), true);
+        walk.Stop();
         animator = GetComponent<Animator>();
         manager = GameObject.Find("GameManager");
         manager_script = manager.GetComponent<GameManager>();
@@ -68,6 +73,20 @@ public class Movement_Controller : MonoBehaviour
         }
         if (state == PlayerState.walk)
         {
+            if ((Input.GetKeyDown(rightKey) || Input.GetKeyDown(leftKey) || Input.GetKeyDown(downKey) || Input.GetKeyDown(upKey)) && !walk.isPlaying)
+            {
+      
+                walk.volume = .3f;
+                walk.pitch = Random.Range(.7f, 1f);
+            }
+            if (!(Input.GetKey(rightKey) || Input.GetKey(leftKey) || Input.GetKey(downKey) || Input.GetKey(upKey)))
+            {
+                if (walk.volume > 0)
+                {
+                    walk.volume = walk.volume - (Time.deltaTime / .5f);
+                }
+            }
+
             DashCheck();
             moveDirection.x *= 0.8f;
             moveDirection.y *= 0.8f;
@@ -142,7 +161,8 @@ public class Movement_Controller : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            sound.me.PlaySound(shoot, .1f, Random.Range(.5f,1f));
+            bullet.GetComponent<AudioSource>().pitch = Random.Range(.5f, 1f);
+            bullet.GetComponent<AudioSource>().volume = .1f;
             Instantiate(bullet);
         }
         if (manager_script.playerHealth <= 0)

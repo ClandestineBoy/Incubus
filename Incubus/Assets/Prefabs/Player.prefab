@@ -106,6 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shoot: {fileID: 8300000, guid: bf887d5e222d770449b7cd7d860dbe97, type: 3}
+  music: {fileID: 8300000, guid: fe8e86521be801f4a8c019805f0364fd, type: 3}
+  step: {fileID: 8300000, guid: bdc2998bf57ead949b55b173f26866cb, type: 3}
   state: 0
   manager: {fileID: 0}
   rightKey: 100

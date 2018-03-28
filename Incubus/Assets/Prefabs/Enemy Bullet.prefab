@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114035551098561016}
   - component: {fileID: 50352590654098322}
   - component: {fileID: 58196663011471372}
+  - component: {fileID: 95767640963825520}
   m_Layer: 0
   m_Name: Enemy Bullet
   m_TagString: EnemyBullet
@@ -37,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598953017743964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2868924, y: -7.7744956, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: 15.985, y: -5.687, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,9 +76,26 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.00000047683716, y: 0}
   serializedVersion: 2
-  m_Radius: 0.49999997
+  m_Radius: 0.2459464
+--- !u!95 &95767640963825520
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598953017743964}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8e1e42e93197d2e4e881e64234295c94, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114035551098561016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,7 +144,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c5da63a08c25e054c8c1fa32b425f011, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d69f8fbef978a8e4892f9eefa74af735, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
