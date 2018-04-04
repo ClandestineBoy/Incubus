@@ -21,9 +21,9 @@ public class sound : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
-    }
-    void Start() {
         audioSources = new AudioSource[64];
+    }
+    void Start() {     
         for (int i = 0; i < audioSources.Length; i++)
         {
             audioSources[i] = (Instantiate(audioSourcePrefab) as GameObject).GetComponent<AudioSource>();

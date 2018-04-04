@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour {
                 if (rooms[i].GetComponent<Room_Stuff>().inRoom == true && rooms[i].GetComponent<Room_Stuff>().roomStart == false)
                 {
                     rooms[i].GetComponent<Room_Stuff>().defeated = true;
-                   
+
                 }
             }
         }

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114711829069093296}
   - component: {fileID: 23289317643778650}
   - component: {fileID: 102462927046757912}
+  - component: {fileID: 114829328370301234}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1306178961106898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: 4, z: -0.12890625}
+  m_LocalPosition: {x: -8, y: 4, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,6 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d80f500bf701f1469f955edec3a1bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurt: {fileID: 8300000, guid: f4d68b6221ee23841a0ea385159855c5, type: 3}
+  open: {fileID: 8300000, guid: 2c94d5ac59d5b8a4995868cef0f81488, type: 3}
   reset: 114
   player: {fileID: 1810984070696158, guid: 61745eb05a191264d80ef50101a5ec99, type: 2}
   bulletDamage: 1
@@ -116,3 +119,17 @@ MonoBehaviour:
   doorsClosed: 1
   playerPos: {x: 0, y: 0}
   rooms: []
+--- !u!114 &114829328370301234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1306178961106898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e0bf94717a18e438ec9caabd3c7beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSourcePrefab: {fileID: 1415641113243280, guid: 9da6038285ffc76418cff5d88c3bbbd2,
+    type: 2}
+  audioSources: []

@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0b1eea03d20f4448bb36e51e45494e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ded: {fileID: 8300000, guid: 601368f13bcf8dd48a7d746a00e3e1c5, type: 3}
   speed: 2
   chase: 0
   shoot: 1

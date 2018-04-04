@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Room_Stuff : MonoBehaviour {
 
+
+    public AudioClip close;
+
+
     public float enemies;
     public GameObject manager;
     public bool inRoom;
@@ -22,6 +26,7 @@ public class Room_Stuff : MonoBehaviour {
 	void Update () {
         if (manager_script.enemiesInRoom <= 0 && defeated == false && inRoom == true && roomStart == true)
         {
+            sound.me.PlaySound(close, .2f, 1);
             for (int i = 0; i < transform.childCount; i++)
             {
                 if(transform.GetChild(i).tag == "Enemy")

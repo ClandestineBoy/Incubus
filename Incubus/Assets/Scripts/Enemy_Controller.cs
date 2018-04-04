@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy_Controller : MonoBehaviour {
 
     // Use this for initialization
+    public AudioClip ded;
+
     Rigidbody2D rb;
     SpriteRenderer sr;
     Vector3 moveDirection;
@@ -52,6 +54,7 @@ public class Enemy_Controller : MonoBehaviour {
 
             if (hp <= 0)
             {
+                sound.me.PlaySound(ded, .2f, Random.Range(.7f, 1));
                 Destroy(gameObject);
                 manager_script.enemiesInRoom -= 1;
             }
