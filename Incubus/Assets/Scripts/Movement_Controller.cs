@@ -12,7 +12,7 @@ public class Movement_Controller : MonoBehaviour
     Animator animator;
     bool walking;
 
-    public enum PlayerState { walk, dash};
+    public enum PlayerState { walk, dash };
     public PlayerState state = PlayerState.walk;
 
     public GameObject manager;
@@ -49,8 +49,9 @@ public class Movement_Controller : MonoBehaviour
 
     void Update()
     {
+        PlayerAnimate();
         manager_script.playerPos = transform.position;
-       
+
         if (state == PlayerState.walk)
         {
             DashCheck();
@@ -138,7 +139,7 @@ public class Movement_Controller : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            sound.me.PlaySound(shoot, .1f, Random.Range(.5f, 1));
+            sound.me.PlaySound(shoot, .5f, Random.Range(.5f, 1));
             Debug.Log("shoot");
             Instantiate(bullet);
         }
@@ -156,7 +157,10 @@ public class Movement_Controller : MonoBehaviour
                 walking = false;
             }
         }
+
+        
     }
+    
     void WalkSound()
     {
         if (walking == false)
@@ -178,6 +182,25 @@ public class Movement_Controller : MonoBehaviour
 
         Vector2 pos = transform.position + (moveDirection * DashMod(speed) * Time.deltaTime);
             rb.MovePosition(pos);       
+    }
+
+    void PlayerAnimate() {
+        if (moveDirection.x < 1 && moveDirection.x > -1)
+        {
+            moveDirection.x = 0;
+        }
+        if (moveDirection.x < 0)
+        {
+            animator.SetInteger("Player State", 1);
+        }
+        if (moveDirection.x > 0)
+        {
+            animator.SetInteger("Player State", 2);
+        }
+        if (moveDirection.x == 0)
+        {
+            animator.SetInteger("Player State", 0);
+        }
     }
 
     void DashCheck()

@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ded: {fileID: 8300000, guid: 601368f13bcf8dd48a7d746a00e3e1c5, type: 3}
+  ouch: {fileID: 8300000, guid: 9b29bb534174635478e8b03b1888e997, type: 3}
   speed: 2
   chase: 0
   shoot: 1

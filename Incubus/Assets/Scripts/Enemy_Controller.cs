@@ -6,6 +6,7 @@ public class Enemy_Controller : MonoBehaviour {
 
     // Use this for initialization
     public AudioClip ded;
+    public AudioClip ouch;
 
     Rigidbody2D rb;
     SpriteRenderer sr;
@@ -69,6 +70,7 @@ public class Enemy_Controller : MonoBehaviour {
         if (collision.gameObject.tag == GameObject.FindGameObjectWithTag("Bullet").tag)
         {
             hp -= manager_script.bulletDamage;
+            sound.me.PlaySound(ouch, .4f, Random.Range(.5f,.6f));
         }
     }
 
