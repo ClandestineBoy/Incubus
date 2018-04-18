@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Enemy_Controller : MonoBehaviour {
 
+
+    float RotateSpeed = 5f;
+    float Radius = 8;
+    bool spiralin = true;
+
+    Vector3 center;
+    float angle;
+
     // Use this for initialization
     public AudioClip ded;
     public AudioClip ouch;
@@ -14,6 +22,7 @@ public class Enemy_Controller : MonoBehaviour {
     public float speed;
     public bool chase;
     public bool shoot;
+    public bool spiral;
 
     Animator animator;
 
@@ -28,6 +37,7 @@ public class Enemy_Controller : MonoBehaviour {
     public GameObject EnemyBullet;
 
 	void Start () {
+        center = transform.position;
         animator = GetComponent<Animator>();
         animator.SetInteger("Alive",1);
         manager = GameObject.Find("GameManager");
@@ -52,6 +62,8 @@ public class Enemy_Controller : MonoBehaviour {
                 Chasing();
             if (shoot == true)
                 Shooting();
+        if (spiral == true)
+            Spiral();
 
             if (hp <= 0)
             {
@@ -89,6 +101,31 @@ public class Enemy_Controller : MonoBehaviour {
             fireCount = fireInterval;
         }
 
+    }
+    void Spiral()
+    {
+        if (spiralin)
+        {
+            Radius -= .05f;
+            if (Radius <= 1)
+            {
+                spiralin = false;
+            }
+        }
+        else
+        {
+            Radius += .05f;
+            if (Radius >= 8)
+            {
+                spiralin = true;
+            }
+        }
+        
+
+        angle += RotateSpeed * Time.deltaTime;
+
+        var offset = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * Radius;
+        transform.position = center + (Vector3)offset;
     }
 
     void Color()

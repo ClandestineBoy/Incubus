@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb7b19808751184db2bbfc131e6f75b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aim: {fileID: 1549161245935154, guid: 5ff634145500e1643a60535a51e7b9a1, type: 2}
   shoot: {fileID: 8300000, guid: e3044b834e0518a4cabe27747429fea2, type: 3}
   music: {fileID: 8300000, guid: fe8e86521be801f4a8c019805f0364fd, type: 3}
   step: {fileID: 8300000, guid: bdc2998bf57ead949b55b173f26866cb, type: 3}

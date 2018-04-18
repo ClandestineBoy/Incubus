@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Movement_Controller : MonoBehaviour
 {
+    public GameObject aim;
+    
     public AudioClip shoot;
     public AudioClip music;
     public AudioClip step;
@@ -45,6 +47,8 @@ public class Movement_Controller : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         rb = GetComponent<Rigidbody2D>();
         manager_script.playerHealth = maxHealth;
+
+        //Instantiate(aim,gameObject.transform);
     }
 
     void Update()
@@ -295,7 +299,7 @@ public class Movement_Controller : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "EnemyBullet")
+        if(collision.tag == "EnemyBullet" || collision.tag == "Enemy")
         {
             manager_script.TakeDamage(1);
         }

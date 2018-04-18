@@ -156,6 +156,50 @@ Prefab:
       propertyPath: ouch
       value: 
       objectReference: {fileID: 8300000, guid: 53c9e1823cf24c84e9ea1eb3325e08dd, type: 3}
+    - target: {fileID: 114064812339694558, guid: ddfe019fef41c784ba7a30e604410875,
+        type: 2}
+      propertyPath: chase
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114064812339694558, guid: ddfe019fef41c784ba7a30e604410875,
+        type: 2}
+      propertyPath: spiral
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 58522441875614266, guid: ddfe019fef41c784ba7a30e604410875,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000614210340990, guid: ddfe019fef41c784ba7a30e604410875, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614595432777508, guid: ddfe019fef41c784ba7a30e604410875, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614595432777508, guid: ddfe019fef41c784ba7a30e604410875, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614595432777508, guid: ddfe019fef41c784ba7a30e604410875, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614595432777508, guid: ddfe019fef41c784ba7a30e604410875, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614595432777508, guid: ddfe019fef41c784ba7a30e604410875, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114064812339694558, guid: ddfe019fef41c784ba7a30e604410875,
+        type: 2}
+      propertyPath: maxhp
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114797347267848954, guid: ddfe019fef41c784ba7a30e604410875, type: 2}
     - {fileID: 114381808240972114, guid: ddfe019fef41c784ba7a30e604410875, type: 2}
