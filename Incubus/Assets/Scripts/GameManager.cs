@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
+
+    public bool GameOver;
+
+    public bool healthpack;
+    public AudioClip healthNoise;
 
     public AudioClip hurt;
+    public AudioClip music;
+    public AudioClip night;
 
     public KeyCode reset;
     public GameObject player;
@@ -19,39 +27,68 @@ public class GameManager : MonoBehaviour {
 
     public GameObject[] rooms;
 
-	// Use this for initialization
-	void Start () {
-       // Cursor.visible = false;
-        doorsClosed = true;
+    public GameObject health;
+
+    public bool InBed = false;
+
+    void Start()
+    {
+        GameOver = false;
+        muzic = sound.me.PlaySound(night, .1f, 1, true);
+         doorsClosed = true;
         tm = GetComponent<TextMesh>();
         bulletDamage = 1;
         playerExists = false;
         DontDestroyOnLoad(gameObject);
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    void Update()
+    {
+        if (GameOver)
+        {
+            StartOver();
+        }
+        //Music();
+        Debug.Log(SceneManager.GetActiveScene());
+        if (InBed == true)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                muzic.Stop();
+                SceneManager.LoadScene("Floor_1");
+                GameObject.Find("Player").transform.position = new Vector3(0, 0, -1);
+                InBed = false;
+                muzic = sound.me.PlaySound(music, .5f, 1, true);
+            }
+        }
         if (Input.GetMouseButtonDown(1) && SceneManager.GetActiveScene().buildIndex == 0)
         {
-           
-            SceneManager.LoadScene("Floor_1");
+
+            SceneManager.LoadScene("Room");
             if (playerExists == false)
             {
                 playerExists = true;
                 Instantiate(player);
             }
         }
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 4)
         {
             rooms = GameObject.FindGameObjectsWithTag("Room");
         }
         if (enemiesInRoom <= 0)
         {
+            float chance = Random.Range(.1f, 1);
+            Debug.Log(chance);
             doorsClosed = false;
-            for(int i = 0; i < rooms.Length; i++)
+            for (int i = 0; i < rooms.Length; i++)
             {
                 if (rooms[i].GetComponent<Room_Stuff>().inRoom == true && rooms[i].GetComponent<Room_Stuff>().roomStart == false)
                 {
+                    if (chance >= .75f && rooms[i].GetComponent<Room_Stuff>().defeated == false && rooms[i] != GameObject.Find("Room (1)"))
+                    {
+                        healthpack = true;
+                        sound.me.PlaySound(healthNoise, .5f, 1);
+                    }
                     rooms[i].GetComponent<Room_Stuff>().defeated = true;
 
                 }
@@ -61,15 +98,15 @@ public class GameManager : MonoBehaviour {
         {
             doorsClosed = true;
         }
-        if (SceneManager.GetActiveScene().buildIndex != 0)
-        tm.text = playerHealth + "";
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            tm.text = playerHealth + "";
 
         if (Input.GetKeyDown(reset))
         {
-            SceneManager.LoadScene(1);
-            GameObject.Find("Player").transform.position = new Vector3(0, 0, 0);
+            StartOver();
         }
     }
+
 
     public void TakeDamage(float damage)
     {
@@ -80,4 +117,18 @@ public class GameManager : MonoBehaviour {
     {
         bulletDamage += dmg;
     }
+
+    AudioSource muzic = new AudioSource();
+
+    public void StartOver()
+    {
+        SceneManager.LoadScene("Room");
+        enemiesInRoom = 0;     
+        muzic.Stop();
+        muzic = sound.me.PlaySound(night, .5f, 1, true);
+        Destroy(GameObject.Find("Player"));
+
+        GameOver = false;
+    }
+
 }

@@ -1038,6 +1038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1810984070696158, guid: 61745eb05a191264d80ef50101a5ec99, type: 2}
   manager: {fileID: 0}
+  music: {fileID: 8300000, guid: fe8e86521be801f4a8c019805f0364fd, type: 3}
 --- !u!81 &1538573437
 AudioListener:
   m_ObjectHideFlags: 0

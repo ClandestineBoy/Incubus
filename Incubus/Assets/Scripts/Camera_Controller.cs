@@ -14,6 +14,12 @@ public class Camera_Controller : MonoBehaviour {
     }
 	
 	void Update () {
+        if (manager_script.healthpack)
+        {
+            Instantiate(manager_script.health, new Vector3(transform.position.x,transform.position.y, 1), Quaternion.identity);
+            manager_script.healthpack = false;
+        }
+
         RoomChange();
         Vector3 pos;
         pos = manager.transform.position;

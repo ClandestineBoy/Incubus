@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 67398e8b0f943354c98bca675199a480
-timeCreated: 1524639187
+guid: 129b6290b098019438b68a8a084eb42a
+timeCreated: 1524616610
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: MC Idle_0
-    21300002: MC Idle_1
-    21300004: MC Idle_2
-    21300006: MC Idle_3
-    21300008: MC Idle_4
-    21300010: MC Idle_5
+    21300000: MC Idle room_0
+    21300002: MC Idle room_1
+    21300004: MC Idle room_2
+    21300006: MC Idle room_3
+    21300008: MC Idle room_4
+    21300010: MC Idle room_5
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -84,85 +84,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MC Idle_0
+      name: MC Idle room_0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 528
+        x: 71
+        y: 563
         width: 112
         height: 176
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MC Idle_1
+      name: MC Idle room_1
       rect:
         serializedVersion: 2
-        x: 328
-        y: 528
+        x: 329
+        y: 563
         width: 112
         height: 176
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MC Idle_2
+      name: MC Idle room_2
       rect:
         serializedVersion: 2
-        x: 72
-        y: 272
+        x: 71
+        y: 342
         width: 112
         height: 176
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MC Idle_3
+      name: MC Idle room_3
       rect:
         serializedVersion: 2
-        x: 328
-        y: 272
+        x: 329
+        y: 342
         width: 112
         height: 176
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MC Idle_4
+      name: MC Idle room_4
       rect:
         serializedVersion: 2
-        x: 72
-        y: 16
-        width: 112
-        height: 176
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+        x: 71
+        y: 95
+        width: 111
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MC Idle_5
+      name: MC Idle room_5
       rect:
         serializedVersion: 2
-        x: 328
-        y: 16
-        width: 112
-        height: 176
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+        x: 332
+        y: 95
+        width: 111
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

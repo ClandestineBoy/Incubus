@@ -107,7 +107,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aim: {fileID: 1549161245935154, guid: 5ff634145500e1643a60535a51e7b9a1, type: 2}
   shoot: {fileID: 8300000, guid: e3044b834e0518a4cabe27747429fea2, type: 3}
-  music: {fileID: 8300000, guid: fe8e86521be801f4a8c019805f0364fd, type: 3}
   step: {fileID: 8300000, guid: bdc2998bf57ead949b55b173f26866cb, type: 3}
   state: 0
   manager: {fileID: 0}
@@ -153,7 +152,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e9d19883adae498458939db364c795d8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 129b6290b098019438b68a8a084eb42a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

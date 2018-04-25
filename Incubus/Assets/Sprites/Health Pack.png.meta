@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 67398e8b0f943354c98bca675199a480
-timeCreated: 1524639187
+guid: a01bed31f33bd86489ed862a0843a674
+timeCreated: 1524637079
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: MC Idle_0
-    21300002: MC Idle_1
-    21300004: MC Idle_2
-    21300006: MC Idle_3
-    21300008: MC Idle_4
-    21300010: MC Idle_5
+    21300000: Health Pack_0
+    21300002: Health Pack_1
+    21300004: Health Pack_2
+    21300006: Health Pack_3
+    21300008: Health Pack_4
+    21300010: Health Pack_5
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -84,85 +84,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MC Idle_0
+      name: Health Pack_0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 528
-        width: 112
-        height: 176
+        x: 112
+        y: 576
+        width: 48
+        height: 64
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.49999967, y: 0.36928177}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MC Idle_1
+      name: Health Pack_1
       rect:
         serializedVersion: 2
-        x: 328
-        y: 528
-        width: 112
-        height: 176
+        x: 368
+        y: 576
+        width: 48
+        height: 72
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.5, y: 0.4070443}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MC Idle_2
+      name: Health Pack_2
       rect:
         serializedVersion: 2
-        x: 72
-        y: 272
-        width: 112
-        height: 176
+        x: 112
+        y: 320
+        width: 48
+        height: 88
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.53485805, y: 0.38591802}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MC Idle_3
+      name: Health Pack_3
       rect:
         serializedVersion: 2
-        x: 328
-        y: 272
-        width: 112
-        height: 176
+        x: 368
+        y: 320
+        width: 48
+        height: 96
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.53485805, y: 0.2908497}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MC Idle_4
+      name: Health Pack_4
       rect:
         serializedVersion: 2
-        x: 72
-        y: 16
-        width: 112
-        height: 176
+        x: 112
+        y: 64
+        width: 48
+        height: 96
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.53485805, y: 0.25599137}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MC Idle_5
+      name: Health Pack_5
       rect:
         serializedVersion: 2
-        x: 328
-        y: 16
-        width: 112
-        height: 176
+        x: 368
+        y: 64
+        width: 48
+        height: 80
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.53485805, y: 0.20718965}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

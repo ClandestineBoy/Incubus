@@ -9,6 +9,8 @@ TagManager:
   - Bullet
   - EnemyBullet
   - Room
+  - bed
+  - Health
   layers:
   - Default
   - TransparentFX

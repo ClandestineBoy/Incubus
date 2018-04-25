@@ -8,7 +8,7 @@ public class Movement_Controller : MonoBehaviour
     public GameObject aim;
     
     public AudioClip shoot;
-    public AudioClip music;
+    
     public AudioClip step;
     AudioSource walk;
     Animator animator;
@@ -40,7 +40,7 @@ public class Movement_Controller : MonoBehaviour
     void Start()
     {
         walking = false;
-        sound.me.PlaySound(music, .5f, 1, true);
+        
         animator = GetComponent<Animator>();
         manager = GameObject.Find("GameManager");
         manager_script = manager.GetComponent<GameManager>();
@@ -138,14 +138,23 @@ public class Movement_Controller : MonoBehaviour
 
         if (manager_script.playerHealth <= 0)
         {
-            SceneManager.LoadScene("Game Over");
+            walk.Stop();
+            manager_script.GameOver = true;
+            Destroy(gameObject);
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            sound.me.PlaySound(shoot, .5f, Random.Range(.5f, 1));
-            Debug.Log("shoot");
-            Instantiate(bullet);
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                sound.me.PlaySound(shoot, .2f, Random.Range(.5f, 1));
+                Debug.Log("shoot");
+                Instantiate(bullet);
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 3 && manager_script.InBed == true)
+            {
+                animator.SetInteger("Player State", 0);
+            }
         }
 
         if (!(Input.GetKey(rightKey) || Input.GetKey(leftKey) || Input.GetKey(upKey) || Input.GetKey(downKey)) && walking == true)
@@ -167,9 +176,9 @@ public class Movement_Controller : MonoBehaviour
     
     void WalkSound()
     {
-        if (walking == false)
+        if (walking == false && SceneManager.GetActiveScene().buildIndex == 1)
         { 
-            walk = sound.me.PlaySound(step, .5f, Random.Range(.7f, 1), true);
+            walk = sound.me.PlaySound(step, .2f, Random.Range(.7f, 1), true);
             walking = true;
         }
     }
@@ -189,21 +198,24 @@ public class Movement_Controller : MonoBehaviour
     }
 
     void PlayerAnimate() {
-        if (moveDirection.x < 1 && moveDirection.x > -1)
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            moveDirection.x = 0;
-        }
-        if (moveDirection.x < 0)
-        {
-            animator.SetInteger("Player State", 1);
-        }
-        if (moveDirection.x > 0)
-        {
-            animator.SetInteger("Player State", 2);
-        }
-        if (moveDirection.x == 0)
-        {
-            animator.SetInteger("Player State", 0);
+            if (moveDirection.x < 1 && moveDirection.x > -1)
+            {
+                moveDirection.x = 0;
+            }
+            if (moveDirection.x < 0)
+            {
+                animator.SetInteger("Player State", 1);
+            }
+            if (moveDirection.x > 0)
+            {
+                animator.SetInteger("Player State", 2);
+            }
+            if (moveDirection.x == 0)
+            {
+                animator.SetInteger("Player State", 0);
+            }
         }
     }
 
@@ -299,9 +311,28 @@ public class Movement_Controller : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("collide");
         if(collision.tag == "EnemyBullet" || collision.tag == "Enemy")
         {
             manager_script.TakeDamage(1);
+        }
+        if(collision.tag == "bed")
+        {
+            manager_script.InBed = true;
+        }
+        if (collision.tag == "Health")
+        {
+            Destroy(collision.gameObject);
+            manager_script.playerHealth += 1;
+            sound.me.PlaySound(manager_script.healthNoise, .5f, 1);
+
+        }
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "bed")
+        {
+            manager_script.InBed = false;
         }
     }
 }

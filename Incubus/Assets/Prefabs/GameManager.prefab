@@ -109,8 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d80f500bf701f1469f955edec3a1bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameOver: 0
   hurt: {fileID: 8300000, guid: f4d68b6221ee23841a0ea385159855c5, type: 3}
-  open: {fileID: 8300000, guid: 2c94d5ac59d5b8a4995868cef0f81488, type: 3}
+  music: {fileID: 8300000, guid: fe8e86521be801f4a8c019805f0364fd, type: 3}
+  night: {fileID: 8300000, guid: 97724e4cb36aaa94fb953afd928cf306, type: 3}
   reset: 114
   player: {fileID: 1810984070696158, guid: 61745eb05a191264d80ef50101a5ec99, type: 2}
   bulletDamage: 1
@@ -119,6 +121,8 @@ MonoBehaviour:
   doorsClosed: 1
   playerPos: {x: 0, y: 0}
   rooms: []
+  health: {fileID: 1164120459713226, guid: acbeeef486730944082e4f96b2b8e58c, type: 2}
+  InBed: 0
 --- !u!114 &114829328370301234
 MonoBehaviour:
   m_ObjectHideFlags: 1
