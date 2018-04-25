@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject End;
+    public GameObject mouseSignal;
 
     public bool GameOver;
-
+    public bool GameWin;
     public bool healthpack;
     public AudioClip healthNoise;
 
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        GameWin = false;
         GameOver = false;
         muzic = sound.me.PlaySound(night, .1f, 1, true);
          doorsClosed = true;
@@ -44,26 +47,42 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            if (GameWin == false)
+            {
+                Debug.Log("end hidden");
+                GameObject.FindGameObjectWithTag("end").GetComponent<SpriteRenderer>().enabled = false;
+                GameObject.FindGameObjectWithTag("end").GetComponent<Animator>().enabled = false;
+            }
+        }
         if (GameOver)
         {
             StartOver();
         }
         //Music();
-        Debug.Log(SceneManager.GetActiveScene());
-        if (InBed == true)
+        Debug.Log(SceneManager.GetActiveScene().buildIndex);
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (InBed == true)
             {
-                muzic.Stop();
-                SceneManager.LoadScene("Floor_1");
-                GameObject.Find("Player").transform.position = new Vector3(0, 0, -1);
+                GameObject.FindGameObjectWithTag("mouse signal").GetComponent<SpriteRenderer>().enabled = true;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    muzic.Stop();
+                GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(0, 0, -1);
                 InBed = false;
                 muzic = sound.me.PlaySound(music, .5f, 1, true);
+                SceneManager.LoadScene("Floor_1");     
+                }
+            }
+            if (InBed == false)
+            {
+                GameObject.FindGameObjectWithTag("mouse signal").GetComponent<SpriteRenderer>().enabled = false;
             }
         }
         if (Input.GetMouseButtonDown(1) && SceneManager.GetActiveScene().buildIndex == 0)
         {
-
             SceneManager.LoadScene("Room");
             if (playerExists == false)
             {
@@ -77,8 +96,8 @@ public class GameManager : MonoBehaviour
         }
         if (enemiesInRoom <= 0)
         {
+            int check = 0;
             float chance = Random.Range(.1f, 1);
-            Debug.Log(chance);
             doorsClosed = false;
             for (int i = 0; i < rooms.Length; i++)
             {
@@ -90,8 +109,23 @@ public class GameManager : MonoBehaviour
                         sound.me.PlaySound(healthNoise, .5f, 1);
                     }
                     rooms[i].GetComponent<Room_Stuff>().defeated = true;
-
                 }
+                if (!rooms[i].GetComponent<Room_Stuff>().defeated)
+                {
+                    check += 1;
+                }
+            }
+            if(check <= 0)
+            {
+                GameWin = true;
+            }
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            if (GameObject.Find("Room (1)").GetComponent<Room_Stuff>().inRoom == true && GameWin)
+            {
+                GameObject.FindGameObjectWithTag("end").GetComponent<SpriteRenderer>().enabled = true;
+                GameObject.FindGameObjectWithTag("end").GetComponent<Animator>().SetInteger("Win", 1);
             }
         }
         if (enemiesInRoom > 0)
@@ -122,13 +156,14 @@ public class GameManager : MonoBehaviour
 
     public void StartOver()
     {
-        SceneManager.LoadScene("Room");
+       
         enemiesInRoom = 0;     
         muzic.Stop();
         muzic = sound.me.PlaySound(night, .5f, 1, true);
-        Destroy(GameObject.Find("Player"));
-
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
         GameOver = false;
+        SceneManager.LoadScene("Room");
+        Instantiate(player);
     }
 
 }

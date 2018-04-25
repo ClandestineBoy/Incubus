@@ -109,7 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d80f500bf701f1469f955edec3a1bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseSignal: {fileID: 1241774150159128, guid: 9ce46ae7d0f5e30429f105b50618eb66,
+    type: 2}
   GameOver: 0
+  healthpack: 0
+  healthNoise: {fileID: 8300000, guid: c522b2b2ba4e998469456a9cc1c97efc, type: 3}
   hurt: {fileID: 8300000, guid: f4d68b6221ee23841a0ea385159855c5, type: 3}
   music: {fileID: 8300000, guid: fe8e86521be801f4a8c019805f0364fd, type: 3}
   night: {fileID: 8300000, guid: 97724e4cb36aaa94fb953afd928cf306, type: 3}

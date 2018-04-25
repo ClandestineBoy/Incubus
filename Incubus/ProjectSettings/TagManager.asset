@@ -11,6 +11,8 @@ TagManager:
   - Room
   - bed
   - Health
+  - mouse signal
+  - end
   layers:
   - Default
   - TransparentFX
